@@ -1,0 +1,13 @@
+services:
+  mindbox:
+    build: .
+    env_file: .env
+    ports:
+      - "8080:8080"
+    volumes:
+      # Заметки и журнал лежат на томе и переживают пересборку контейнера
+      - mindbox_data:/app/data
+    restart: unless-stopped
+
+volumes:
+  mindbox_data:
